@@ -6,12 +6,12 @@ import {
 import * as path from "path"
 import express from "express"
 
-import { createContent, createMetadata } from "./provider"
+import { createContent, createMetadata } from "../provider"
 
 process.env.DSAP = "dv"
 process.env.ENV_EXTENSION = undefined
 
-describe("Pact Provider Verifier", () => {
+describe("Success Case", () => {
   describe("HTTP Pact Verification", () => {
     const app = express()
     let server: any
