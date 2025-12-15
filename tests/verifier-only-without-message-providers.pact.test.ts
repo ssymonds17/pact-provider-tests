@@ -23,7 +23,7 @@ describe("Failing Case #2", () => {
     server.close(done)
   })
 
-  it("fails when both rest and message paths are provided and no messageProviders field is given", () => {
+  it("fails when both rest and message paths are provided and no messageProviders field is given", async () => {
     const verifier = new Verifier({
       provider: "Api",
       logLevel: "info",
@@ -46,6 +46,6 @@ describe("Failing Case #2", () => {
       },
     })
 
-    return verifier.verifyProvider()
+    await expect(verifier.verifyProvider()).rejects.toThrow()
   }, 600000)
 })
