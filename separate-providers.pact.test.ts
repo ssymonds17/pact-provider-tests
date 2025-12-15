@@ -39,11 +39,13 @@ describe("Pact Provider Verifier", () => {
         pactUrls: [path.resolve(__dirname, "./pact-contracts/Api-Client.json")],
         stateHandlers: {
           "an id exists": async () =>
-            Promise.resolve({
-              status: 200,
-              responseBody: {
-                id: 99999,
-              },
+            new Promise((resolve, reject) => {
+              return resolve({
+                status: 200,
+                responseBody: {
+                  id: 99999,
+                },
+              })
             }),
         },
       })
