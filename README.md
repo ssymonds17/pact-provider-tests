@@ -19,7 +19,7 @@ cd pact-provider-tests
 ### 2. Install Dependencies
 
 ```bash
-npm install
+npm ci
 ```
 
 This will install all required dependencies including:
