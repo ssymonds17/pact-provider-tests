@@ -1,4 +1,4 @@
-import { v7 as uuidv7 } from "uuid"
+import { v4 as uuidv4 } from "uuid"
 
 export const createContent = () => {
   return new Promise((resolve, reject) => {
@@ -6,7 +6,7 @@ export const createContent = () => {
       Source: "Api",
       Detail: JSON.stringify(
         {
-          data: { id: uuidv7() },
+          data: { id: uuidv4() },
           metadata,
         },
         (_, v) => (typeof v === "bigint" ? parseInt(v.toString()) : v)
@@ -24,8 +24,8 @@ export const createMetadata = () => {
 }
 
 const metadata = {
-  traceId: uuidv7(),
-  messageId: uuidv7(),
+  traceId: uuidv4(),
+  messageId: uuidv4(),
   timestamp: new Date().toISOString(),
   source: {
     applicationName: "Api",
