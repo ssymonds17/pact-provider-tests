@@ -1,0 +1,76 @@
+{
+  "consumer": {
+    "name": "Communication"
+  },
+  "interactions": [
+    {
+      "contents": {
+        "content": {
+          "data": {
+            "id": "0193e6c0-7b32-7000-8000-000000000000"
+          },
+          "metadata": {
+            "messageId": "message-123",
+            "timestamp": "2019-12-31T19:00:00.000000-05:00"
+          }
+        },
+        "contentType": "application/json",
+        "encoded": false
+      },
+      "description": "an order processed event",
+      "key": "",
+      "matchingRules": {
+        "body": {
+          "$.data.id": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "type"
+              }
+            ]
+          },
+          "$.metadata.messageId": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "regex",
+                "regex": "[a-zA-Z0-9-]+"
+              }
+            ]
+          },
+          "$.metadata.timestamp": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "format": "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXXX",
+                "match": "timestamp"
+              }
+            ]
+          }
+        }
+      },
+      "metadata": {
+        "detailType": "OrderProcessed",
+        "source": "Api"
+      },
+      "pending": false,
+      "providerStates": [
+        {
+          "name": "an order is processed"
+        }
+      ],
+      "type": "Asynchronous/Messages"
+    }
+  ],
+  "metadata": {
+    "pact-jvm": {
+      "version": "4.6.17"
+    },
+    "pactSpecification": {
+      "version": "4.0"
+    }
+  },
+  "provider": {
+    "name": "Api"
+  }
+}
